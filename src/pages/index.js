@@ -1,149 +1,185 @@
 import * as React from "react"
+import cover from "../images/cover.jpeg"
+import Logo from "../images/logowhite.inline.svg"
+import ErpIllustration from "../images/erp.inline.svg"
+import EshopIllustration from "../images/eshop.inline.svg"
+import OpenSourceIllustration from "../images/opensource.inline.svg"
+import ProjetIllustration from "../images/projet.inline.svg"
 
-// styles
-const pageStyles = {
-  color: "#232129",
-  padding: "96px",
-  fontFamily: "-apple-system, Roboto, sans-serif, serif",
-}
-const headingStyles = {
-  marginTop: 0,
-  marginBottom: 64,
-  maxWidth: 320,
-}
-const headingAccentStyles = {
-  color: "#663399",
-}
-const paragraphStyles = {
-  marginBottom: 48,
-}
-const codeStyles = {
-  color: "#8A6534",
-  padding: 4,
-  backgroundColor: "#FFF4DB",
-  fontSize: "1.25rem",
-  borderRadius: 4,
-}
-const listStyles = {
-  marginBottom: 96,
-  paddingLeft: 0,
-}
-const listItemStyles = {
-  fontWeight: "300",
-  fontSize: "24px",
-  maxWidth: "560px",
+const ArrowDownIcon = () => {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+    </svg>
+  )
 }
 
-const linkStyle = {
-  color: "#8954A8",
-  fontWeight: "bold",
-  fontSize: "16px",
-  verticalAlign: "5%",
+const MailSvgIcon = () => {
+    return (
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+      </svg>
+    )
 }
 
-const docLinkStyle = {
-  ...linkStyle,
-  listStyleType: "none",
-  marginBottom: 24,
-}
-
-const descriptionStyle = {
-  color: "#232129",
-  fontSize: "14px",
-}
-
-const docLink = {
-  text: "Documentation",
-  url: "https://www.gatsbyjs.com/docs/",
-  color: "#8954A8",
-}
-// data
-const links = [
-  {
-    text: "Tutorial",
-    url: "https://www.gatsbyjs.com/docs/tutorial/",
-    description:
-      "A great place to get started if you're new to web development. Designed to guide you through setting up your first Gatsby site.",
-    color: "#E95800",
-  },
-  {
-    text: "How to Guides",
-    url: "https://www.gatsbyjs.com/docs/how-to/",
-    description:
-      "Practical step-by-step guides to help you achieve a specific goal. Most useful when you're trying to get something done.",
-    color: "#1099A8",
-  },
-  {
-    text: "Reference Guides",
-    url: "https://www.gatsbyjs.com/docs/reference/",
-    description:
-      "Nitty-gritty technical descriptions of how Gatsby works. Most useful when you need detailed information about Gatsby's APIs.",
-    color: "#BC027F",
-  },
-  {
-    text: "Conceptual Guides",
-    url: "https://www.gatsbyjs.com/docs/conceptual/",
-    description:
-      "Big-picture explanations of higher-level Gatsby concepts. Most useful for building understanding of a particular topic.",
-    color: "#0D96F2",
-  },
-  {
-    text: "Plugin Library",
-    url: "https://www.gatsbyjs.com/plugins",
-    description:
-      "Add functionality and customize your Gatsby site or app with thousands of plugins built by our amazing developer community.",
-    color: "#000000",
-  },
-]
-
-// markup
 const IndexPage = () => {
   return (
-    <main style={pageStyles}>
-      <title>Home Page</title>
-      <h1 style={headingStyles}>
-        Congratulations
-        <br />
-        <span style={headingAccentStyles}>— you just made a Gatsby site! </span>
-        <span role="img" aria-label="Party popper emojis">
-          🎉🎉🎉
-        </span>
-      </h1>
-      <p style={paragraphStyles}>
-        Edit <code style={codeStyles}>src/pages/index.js</code> to see this page
-        update in real-time.{" "}
-        <span role="img" aria-label="Sunglasses smiley emoji">
-          😎
-        </span>
-      </p>
-      <ul style={listStyles}>
-        <li style={docLinkStyle}>
-          <a
-            style={linkStyle}
-            href={`${docLink.url}?utm_source=starter&utm_medium=start-page&utm_campaign=minimal-starter`}
-          >
-            {docLink.text}
-          </a>
-        </li>
-        {links.map(link => (
-          <li style={{ ...listItemStyles, color: link.color }}>
-            <span>
-              <a
-                style={linkStyle}
-                href={`${link.url}?utm_source=starter&utm_medium=start-page&utm_campaign=minimal-starter`}
-              >
-                {link.text}
-              </a>
-              <p style={descriptionStyle}>{link.description}</p>
-            </span>
-          </li>
-        ))}
-      </ul>
-      <img
-        alt="Gatsby G Logo"
-        src="data:image/svg+xml,%3Csvg width='24' height='24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 2a10 10 0 110 20 10 10 0 010-20zm0 2c-3.73 0-6.86 2.55-7.75 6L14 19.75c3.45-.89 6-4.02 6-7.75h-5.25v1.5h3.45a6.37 6.37 0 01-3.89 4.44L6.06 9.69C7 7.31 9.3 5.63 12 5.63c2.13 0 4 1.04 5.18 2.65l1.23-1.06A7.959 7.959 0 0012 4zm-8 8a8 8 0 008 8c.04 0 .09 0-8-8z' fill='%23639'/%3E%3C/svg%3E"
-      />
-    </main>
+    <div>
+
+      <div className="h-screen w-full flex items-center bg-cover bg-center" style={{backgroundImage:`linear-gradient(to bottom,rgba(51, 116, 156, 0.42) 0,rgba(0, 18, 29, 0.8)),url(${cover})`}}>
+        <div className="w-full px-4 text-center">
+        <div > <Logo className="w-24 h-24 md:w-32 md:h-32 mx-auto" /> </div>
+        <div className="px-12 text-center mt-4 text-white text-4xl md:text-5xl font-bold uppercase"> Atelier du Numérique </div>
+        <div className="px-2 text-center mt-4 text-white text-lg md:text-2xl font-light"> 
+            Expert du Développement Web et Logiciel
+        </div>
+        <div className="px-2 text-center mt-20 text-white text-lg font-bold"> 
+            Qui sommes nous ?
+        </div>
+        <div className="w-8 h-8 text-white mx-auto mt-20 animate-bounce"> <ArrowDownIcon /> </div>
+        </div>
+      </div>
+
+      <div className="py-5 px-5 w-full max-w-screen-sm mx-auto md:mt-10 text-center h-96 md:h-96 flex items-center">
+        <div>
+        <div className="text-2xl md:text-3xl font-bold text-adn-800" > Nous avons ce qu'il vous faut ! </div>
+        <div className="text-md mt-2 mb-5 text-gray-700" > 
+            Nous sommes expert dans le digital et le web.
+            Grâce à nos solutions, nous aidons nos clients à moderniser leur métier pour gagner en efficacité et notoriété.
+        </div>
+        <a href="#erp" className="px-4 py-2 text-sm font-bold uppercase bg-gray-100 hover:bg-gray-200 focus:outline-none  focus:ring-2  text-adn-700 rounded-2xl"> Découvrir nos services </a>
+        </div>
+      </div>
+
+      <div className="py-5 px-5 w-full max-w-screen-lg mx-auto" id="erp">
+        <div className="text-xl font-bold text-adn-800 md:hidden"> Développement d'application sur mesure </div>
+        <div className="md:hidden" > </div>
+        <div className="flex flex-col md:flex-row md:mt-10">
+          <div className="md:w-1/2 py-10"> <ErpIllustration className="w-full h-56 md:h-96" />  </div>
+          <div className="text-md mt-2 mb-5 text-gray-500 md:w-1/2 md:pl-14" > 
+              <div className="text-2xl font-bold text-adn-800 hidden md:block mb-2"> Développement d'application sur mesure </div>
+              <p>
+                Une idée innovante ? Une application mobile ? Un besoin en ERP personnalisé ? Un Chatbot ? N'hésitez pas à nous parler de votre projet !
+              </p>
+              <ul className="list-disc pl-5 pt-5">
+                <li>ERP personnalité avec Module de ventes, facturation, gestion du stock, point de vente, RH, automatisation, et bien plus...</li>
+                <li>Développement sur mesure d'applications.</li>
+                <li>Qualité garantie pour la maintenabilité et l'évolution du projet</li>
+              </ul>
+          </div>
+        </div>
+      </div>
+
+
+      <div className="py-5 px-5 w-full max-w-screen-lg mx-auto" id="esho">
+        <div className="text-xl font-bold text-adn-800 md:hidden"> Réalisation de site internet e-commerce </div>
+        <div className="md:hidden" > </div>
+        <div className="flex flex-col md:flex-row-reverse md:mt-10">
+          <div className="md:w-1/2 py-10"> <EshopIllustration className="w-full h-56 md:h-96" />  </div>
+          <div className="text-md mt-2 mb-5 text-gray-500 md:w-1/2 md:px-10" > 
+              <div className="text-2xl font-bold text-adn-800 hidden md:block mb-2"> Réalisation de site internet e-commerce </div>
+              <p>
+              Votre site internet est l'élement clé de votre communication digitale. Il est le reflet numérique de votre activité et nous y accordons le plus grand soin. C'est la plateforme idéale pour attirer de nouveaux clients, et fidéliser votre clientèle.
+              <br/>
+              Pour atteindre vos objectifs, nous garantissons :
+            </p>
+            <ul className="list-disc pl-5 pt-5">
+              <li>Optimisation de votre référencement sur les moteurs de recherches, en respectant les bonnes pratiques de conception.</li>
+              <li>Une navigation adaptée aux smartphones et tablettes.</li>
+              <li>Une réalisation dans un style attractif et moderne.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+
+      <div className="py-5 px-5 w-full max-w-screen-lg mx-auto" id="opensource">
+        <div className="text-xl font-bold text-adn-800 md:hidden"> Culture Open Source </div>
+        <div className="md:hidden" > </div>
+        <div className="flex flex-col md:flex-row md:mt-10">
+          <div className="md:w-1/2 py-10"> <OpenSourceIllustration className="w-full h-40 md:h-64" />  </div>
+          <div className="text-md mt-2 mb-5 text-gray-500 md:w-1/2 md:pt-10 md:pl-14" > 
+              <div className="text-2xl font-bold text-adn-800 hidden md:block mb-2"> Culture Open Source </div>
+              <p>
+              Chez ADN nous nous privilégions les solutions dites open-source. Des milliers de développeurs contribuent continuellement à l'amélioration des solutions que nous utilisons chaque jour. Les avantages sont multiples :
+              </p>
+              <ul className="list-disc pl-5 pt-5">
+                <li>Des millions d'utilisateurs à travers le monde. </li>
+                <li>Des solutions performantes à moindre coût. </li>
+                <li>Des mises à jours d'améliorations régulières et continues. </li>
+              </ul>
+          </div>
+        </div>
+      </div>
+
+      
+
+      <div className="py-5 px-5 w-full max-w-screen-lg mx-auto md:pt-16" id="contact">
+        <div className="text-xl font-bold text-adn-800 md:hidden"> Vous avez un projet ? Restons en contact !</div>
+        <div class="flex flex-col md:flex-row"> 
+        <div class="md:w-2/3"> <ProjetIllustration className="w-full h-40 md:h-96 my-10" /> </div>
+        <div className="text-md mt-2 mb-5 text-gray-700 md:pl-14"> 
+            <div className="text-2xl font-bold text-adn-800 hidden md:block mb-2"> Vous avez un projet ? Restons en contact !</div>
+            <p>
+              Echangeons autour d'un café <span className="text-gray-500">(ou un thé)</span>. Nous vous répondons dans les plus bref délais.
+            </p>
+            <form className="w-full max-w-lg mt-10" data-netlify="true" name="contact" method="post" >
+              <input type="hidden" name="subject" value="Nouvelle demande de contact depuis atelierdunumerique.io" />
+              <input type="hidden" name="form-name" value="contact" />
+              <div className="flex flex-wrap -mx-3 mb-4">
+                <div className="w-full px-3 md:mb-0">
+                  <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+                    Votre Nom
+                  </label>
+                  <input className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text"  />
+                </div>
+              </div>
+              <div className="flex flex-wrap -mx-3 mb-4">
+                <div className="w-full px-3">
+                  <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
+                    E-mail
+                  </label>
+                  <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="email" type="email" />
+                </div>
+              </div>
+              <div className="flex flex-wrap -mx-3 mb-4">
+                <div className="w-full px-3">
+                  <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
+                    Numéro de Téléphone <span className="text-gray-500"> (optionnel) </span>
+                  </label>
+                  <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="email" type="email" />
+                </div>
+              </div>
+              <div className="flex flex-wrap -mx-3 mb-4">
+                <div className="w-full px-3">
+                  <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
+                    Votre Message
+                  </label>
+                  <textarea className="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 h-48 resize-none" id="message"></textarea>
+                </div>
+              </div>
+              <div className="md:flex md:items-center">
+                <div className="md:w-1/3">
+                  <button type="submit" className="flex items-center px-4 py-2 text-sm font-bold uppercase bg-gray-100 hover:bg-gray-200 focus:outline-none  focus:ring-2  text-adn-700 rounded-2xl"> 
+                    <div className="w-4 h-4 inline-block mr-1"><MailSvgIcon/></div> <div>Envoyer</div>
+                  </button>
+                </div>
+                <div className="md:w-2/3"></div>
+              </div>
+            </form>
+        </div>
+        </div>
+      </div>
+
+      <div className="w-full mt-10 py-10 px-20 bg-adn-700">
+          <div className="max-w-screen-lg mx-auto">
+            <div className="text-white text-lg font-bold"> Contact </div>
+            <div className="text-white font-thin"> contact@atelierdunumerique.io </div>
+            <div className="text-white font-thin"> +262 693 453 483 </div>
+          </div>
+      </div>
+
+    </div>
   )
 }
 

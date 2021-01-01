@@ -6,6 +6,14 @@ module.exports = {
     "gatsby-plugin-netlify-cms",
     "gatsby-plugin-postcss",
     {
+      resolve: 'gatsby-plugin-react-svg',
+      options: {
+        rule: {
+          include: /\.inline\.svg$/,
+        },
+      },
+    },
+    {
       resolve: "gatsby-plugin-google-analytics",
       options: {
         trackingId: "fake-id",
