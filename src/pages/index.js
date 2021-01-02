@@ -38,7 +38,7 @@ const IndexPage = ({data}) => {
     <div>
 
       <div id="cover" className="h-screen w-full items-center bg-cover bg-center bg-adn-800 relative" >
-        <Img fluid={coverImageSources} className="h-screen w-full absolute top-0"/>
+        <Img loading="eager" fluid={coverImageSources} className="h-screen w-full absolute top-0"/>
         <div className="w-full flex items-center px-4 text-center h-screen z-10 absolute top-0" style={{backgroundImage:`linear-gradient(to bottom,rgba(51, 116, 156, 0.42) 0,rgba(0, 18, 29, 0.8))`}}>
         <div className="w-full text-center">
           <div > <Logo className="w-24 h-24 md:w-32 md:h-32 mx-auto" /> </div>
