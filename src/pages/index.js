@@ -1,10 +1,12 @@
 import * as React from "react"
-import cover from "../images/cover.jpeg"
 import Logo from "../images/logowhite.inline.svg"
 import ErpIllustration from "../images/erp.inline.svg"
 import EshopIllustration from "../images/eshop.inline.svg"
 import OpenSourceIllustration from "../images/opensource.inline.svg"
 import ProjetIllustration from "../images/projet.inline.svg"
+import Img from "gatsby-image"
+import { graphql } from "gatsby"
+
 
 const ArrowDownIcon = () => {
   return (
@@ -22,21 +24,33 @@ const MailSvgIcon = () => {
     )
 }
 
-const IndexPage = () => {
+const IndexPage = ({data}) => {
+
+  const coverImageSources = [
+    data.mobileCover.childImageSharp.fluid,
+    {
+      ...data.desktopCover.childImageSharp.fluid,
+      media: `(min-width: 768px)`,
+    },
+  ]
+
   return (
     <div>
 
-      <div className="h-screen w-full flex items-center bg-cover bg-center" style={{backgroundImage:`linear-gradient(to bottom,rgba(51, 116, 156, 0.42) 0,rgba(0, 18, 29, 0.8)),url(${cover})`}}>
-        <div className="w-full px-4 text-center">
-        <div > <Logo className="w-24 h-24 md:w-32 md:h-32 mx-auto" /> </div>
-        <div className="px-12 text-center mt-4 text-white text-4xl md:text-5xl font-bold uppercase"> Atelier du Numérique </div>
-        <div className="px-2 text-center mt-4 text-white text-lg md:text-2xl font-light"> 
-            Expert du Développement Web et Logiciel
-        </div>
-        <div className="px-2 text-center mt-20 text-white text-lg font-bold"> 
-            Qui sommes nous ?
-        </div>
-        <div className="w-8 h-8 text-white mx-auto mt-20 animate-bounce"> <ArrowDownIcon /> </div>
+      <div id="cover" className="h-screen w-full items-center bg-cover bg-center bg-adn-800 relative" >
+        <Img fluid={coverImageSources} className="h-screen w-full absolute top-0"/>
+        <div className="w-full flex items-center px-4 text-center h-screen z-10 absolute top-0" style={{backgroundImage:`linear-gradient(to bottom,rgba(51, 116, 156, 0.42) 0,rgba(0, 18, 29, 0.8))`}}>
+        <div className="w-full text-center">
+          <div > <Logo className="w-24 h-24 md:w-32 md:h-32 mx-auto" /> </div>
+          <div className="px-12 text-center mt-4 text-white text-4xl md:text-5xl font-bold uppercase"> Atelier du Numérique </div>
+          <div className="px-2 text-center mt-4 text-white text-lg md:text-2xl font-light"> 
+              Expert du Développement Web et Logiciel
+          </div>
+          <div className="px-2 text-center mt-20 text-white text-lg font-bold"> 
+              Qui sommes nous ?
+          </div>
+          <div className="w-8 h-8 text-white mx-auto mt-20 animate-bounce"> <ArrowDownIcon /> </div>
+          </div>
         </div>
       </div>
 
@@ -116,8 +130,8 @@ const IndexPage = () => {
 
       <div className="py-5 px-5 w-full max-w-screen-lg mx-auto md:pt-16" id="contact">
         <div className="text-xl font-bold text-adn-800 md:hidden"> Vous avez un projet ? Restons en contact !</div>
-        <div class="flex flex-col md:flex-row"> 
-        <div class="md:w-2/3"> <ProjetIllustration className="w-full h-40 md:h-96 my-10" /> </div>
+        <div className="flex flex-col md:flex-row"> 
+        <div className="md:w-2/3"> <ProjetIllustration className="w-full h-40 md:h-96 my-10" /> </div>
         <div className="text-md mt-2 mb-5 text-gray-700 md:pl-14"> 
             <div className="text-2xl font-bold text-adn-800 hidden md:block mb-2"> Vous avez un projet ? Restons en contact !</div>
             <p>
@@ -184,3 +198,21 @@ const IndexPage = () => {
 }
 
 export default IndexPage
+
+export const query = graphql`
+  query {
+    mobileCover: file(relativePath: { eq: "cover@md.jpeg" }) {
+      childImageSharp {
+        fluid(maxWidth: 768, quality: 100) {
+          ...GatsbyImageSharpFluid_withWebp_noBase64
+        }
+      }
+    },
+    desktopCover: file(relativePath: { eq: "cover.jpeg" }) {
+      childImageSharp {
+        fluid(maxWidth: 1500, quality: 100) {
+          ...GatsbyImageSharpFluid_withWebp_noBase64
+        }
+      }
+    }
+  }`
