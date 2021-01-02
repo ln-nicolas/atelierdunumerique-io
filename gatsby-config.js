@@ -1,6 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: "atelierdunumerique",
+    title: "Atelier du numérique",
+    description: "Expert du développement web et logiciel",
+    url: "https://atelierdunumerique.io"
   },
   plugins: [
     "gatsby-plugin-netlify-cms",
@@ -21,7 +23,7 @@ module.exports = {
     // },
     "gatsby-plugin-sharp",
     "gatsby-plugin-react-helmet",
-    "gatsby-plugin-sitemap",
+   // "gatsby-plugin-sitemap",
     "gatsby-transformer-sharp",
     {
       resolve: "gatsby-source-filesystem",
